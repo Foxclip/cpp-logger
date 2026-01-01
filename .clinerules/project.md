@@ -1,0 +1,1 @@
+- If you want to build a project, build it using CMake in the build/ directory

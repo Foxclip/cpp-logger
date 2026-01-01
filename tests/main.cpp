@@ -260,25 +260,31 @@ void nestedTags2Test() {
     );
 }
 
+void run_test(std::function<void()> func) {
+    logger.lock();
+    func();
+    logger.unlock();
+}
+
 int main() {
     // Logger::disableStdWrite();
-    basicTest();
-    multipleLinesTest();
-    indentTest();
-    indent2Test();
-    indent3Test();
-    loggerFlushTest();
-    onlineWriteTest();
-    tagTest();
-    deactivateTest();
-    enableTagTest();
-    disableTagTest();
-    returnDisabledTest();
-    nestedTags1Test();
-    reenableTag1Test();
-    disableAfterTagTest();
-    reenableTag2Test();
-    nestedTags2Test();
+    run_test(basicTest);
+    run_test(multipleLinesTest);
+    run_test(indentTest);
+    run_test(indent2Test);
+    run_test(indent3Test);
+    run_test(loggerFlushTest);
+    run_test(onlineWriteTest);
+    run_test(tagTest);
+    run_test(deactivateTest);
+    run_test(enableTagTest);
+    run_test(disableTagTest);
+    run_test(returnDisabledTest);
+    run_test(nestedTags1Test);
+    run_test(reenableTag1Test);
+    run_test(disableAfterTagTest);
+    run_test(reenableTag2Test);
+    run_test(nestedTags2Test);
     // Logger::enableStdWrite();
     std::cout << std::endl;
     std::cout << "ALL PASSED" << std::endl;
