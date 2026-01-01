@@ -6,6 +6,9 @@ A C++ logging library without dependencies.
 - Easy managing of the indentation level.
 - Tag system that allows to disable logging for specific parts of the code.
 
+## Dependencies
+- None.
+
 ## Build
 
 ### Prerequisites
@@ -92,6 +95,3 @@ logger << "Line 2" << std::endl;
 ```
 
 ### 
-
-## Dependencies
-- None.
