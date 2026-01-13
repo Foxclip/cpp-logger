@@ -1,6 +1,6 @@
 #include <iostream>
 #include <assert.h>
-#include "logger.h"
+#include "logger/logger.h"
 
 void basicTest() {
     Logger logger(true);
