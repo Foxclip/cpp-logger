@@ -14,7 +14,7 @@ void _loggerAssert_print_msg(bool value, const std::string& message) {
 }
 
 #define loggerAssert(value, ...) \
-	_loggerAssert_print_msg(value, __VA_ARGS__); \
+	_loggerAssert_print_msg(value __VA_OPT__(, __VA_ARGS__)); \
 	assert(value);
 
 #else
@@ -233,7 +233,11 @@ std::string Logger::currentTime() {
 	time_t t;
 	std::time(&t);
 	tm l;
+#if defined(_WIN32)
 	localtime_s(&l, &t);
+#else
+	localtime_r(&t, &l);
+#endif
 	std::stringstream ss;
 	ss << std::setw(2) << std::setfill('0') << l.tm_hour;
 	ss << ":" << std::setw(2) << std::setfill('0') << l.tm_min;
